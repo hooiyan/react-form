@@ -5,6 +5,7 @@ import {
   Flex,
   FormControl,
   FormLabel,
+  Input,
   Radio,
   RadioGroup,
   Select,
@@ -159,13 +160,27 @@ function AppForm() {
           </AppFormControl> */}
 
           <Button
-            type="submit"
+            type="reset"
             width="200px"
             textTransform="capitalize"
             colorScheme="green"
           >
             Sign up
           </Button>
+          <input
+            hidden
+            type="image"
+            src="/gradient-btn.jpg"
+            alt="Login"
+          />
+          <input
+            hidden
+            value="123456"
+          />
+          <Box>
+            <Input type="search" />
+            <Button>Search</Button>
+          </Box>
         </Box>
       )}
     </Formik>
