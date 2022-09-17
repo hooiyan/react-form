@@ -1,24 +1,28 @@
+import { Box, Button, Input, Select, Flex } from '@chakra-ui/react'
+import { useRef } from 'react'
+
 import AppFormControl from '@/components/AppFormControl'
 import Helmet from '@/components/Helmet'
-import { Input, Button, Select } from '@chakra-ui/react'
-import React, { useRef } from 'react'
 
 function UncontrolledFormPage() {
   const fullNameRef = useRef('')
   const passportRef = useRef('')
+  const dobRef = useRef('')
   const nationalityRef = useRef('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('fullname', fullNameRef.current.value)
     console.log('passport', passportRef.current.value)
+    console.log('dob', dobRef.current.value)
     console.log('nationality', nationalityRef.current.value)
   }
 
   return (
     <>
       <Helmet title="React uncontrolled component" />
-      <form
+      <Box
+        as="form"
         id="icaForm"
         onSubmit={(e) => handleSubmit(e)}
       >
@@ -35,17 +39,32 @@ function UncontrolledFormPage() {
           />
         </AppFormControl>
 
-        <AppFormControl
-          isRequired
-          htmlFor="passport"
-          label="Passport Number"
-        >
-          <Input
-            ref={passportRef}
-            id="passport"
-            name="passport"
-          />
-        </AppFormControl>
+        <Flex gap={4}>
+          <AppFormControl
+            isRequired
+            htmlFor="passport"
+            label="Passport Number"
+          >
+            <Input
+              ref={passportRef}
+              id="passport"
+              name="passport"
+            />
+          </AppFormControl>
+
+          <AppFormControl
+            isRequired
+            htmlFor="dob"
+            label="Date of Birth"
+          >
+            <Input
+              ref={dobRef}
+              id="dob"
+              name="dob"
+              type="date"
+            />
+          </AppFormControl>
+        </Flex>
 
         <AppFormControl
           isRequired
@@ -68,7 +87,7 @@ function UncontrolledFormPage() {
         >
           Confirm
         </Button>
-      </form>
+      </Box>
     </>
   )
 }
