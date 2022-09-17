@@ -1,12 +1,17 @@
 import { FormControl, FormLabel } from '@chakra-ui/react'
 import React from 'react'
 
-function AppFormControl({ label, children }) {
+function AppFormControl({ isRequired, htmlFor, label, children }) {
   return (
-    <FormControl>
+    <FormControl
+      isRequired={isRequired}
+      mb={4}
+    >
       <FormLabel
-        color="gray.500"
+        color="gray.800"
         fontSize={12}
+        fontWeight="bold"
+        htmlFor={htmlFor}
       >
         {label}
       </FormLabel>

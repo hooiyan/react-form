@@ -1,4 +1,4 @@
-import AppInput from '@/components/AppInput'
+import FormikInput from '@/components/FormikInput'
 import {
   Box,
   Button,
@@ -87,7 +87,7 @@ function AppForm() {
               <Field
                 name="firstName"
                 placeholder="First name"
-                component={AppInput}
+                component={FormikInput}
               />
             </AppFormControl>
 
@@ -95,7 +95,7 @@ function AppForm() {
               <Field
                 name="surname"
                 placeholder="Surname"
-                component={AppInput}
+                component={FormikInput}
               />
             </AppFormControl>
           </Flex>
@@ -104,7 +104,7 @@ function AppForm() {
             <Field
               name="loginMethod"
               placeholder="Mobile number or email address"
-              component={AppInput}
+              component={FormikInput}
             />
           </AppFormControl>
 
@@ -112,7 +112,7 @@ function AppForm() {
             <Field
               name="password"
               placeholder="New password"
-              component={AppInput}
+              component={FormikInput}
             />
           </AppFormControl>
 
@@ -154,7 +154,7 @@ function AppForm() {
               <Field
                 name="gender"
                 value="female"
-                component={AppInput}
+                component={FormikInput}
               />
             </RadioGroup>
           </AppFormControl> */}
