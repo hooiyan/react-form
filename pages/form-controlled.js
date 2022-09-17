@@ -1,6 +1,8 @@
-import { Button, Flex, Heading, Image, Text } from '@chakra-ui/react'
-import { useState } from 'react'
+import { Button, Flex, Heading, Icon, Image, Text } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { collection, addDoc } from 'firebase/firestore'
+import { BsFillCheckCircleFill } from 'react-icons/bs'
+import { doc, getDoc } from 'firebase/firestore'
 
 import AppFormControl from '@/components/AppFormControl'
 import AppInput from '@/components/AppInput'
@@ -19,10 +21,17 @@ function ControlledFormPage() {
 
   const dbInstance = collection(db, 'amazon')
 
+  const clearForm = () => {
+    setUsername('')
+    setLoginMethod('')
+    setPassword('')
+    setConfirmPassword('')
+  }
+
   const handleSubmit = (e) => {
     const url = '/create-account'
-    e.preventDefault()
 
+    e.preventDefault()
     setIsLoading(true)
 
     axiosPublic
@@ -40,11 +49,28 @@ function ControlledFormPage() {
             password,
           })
           setIsSubmitted(true)
+          clearForm()
         }
       })
       .catch((err) => console.error(err.message))
       .finally(() => setIsLoading(false))
   }
+
+  useEffect(() => {
+    const getDoccc = async () => {
+      const docRef = doc(db, 'amazon', 'BNK5A2ZVB9cXL8TRxjlJ')
+      const docSnap = await getDoc(docRef)
+
+      if (docSnap.exists()) {
+        console.log('Document data:', docSnap.data())
+      } else {
+        // doc.data() will be undefined in this case
+        console.log('No such document!')
+      }
+    }
+
+    getDoccc()
+  }, [])
 
   return (
     <>
@@ -57,7 +83,10 @@ function ControlledFormPage() {
           mx="auto"
         />
         <Heading mb={4}>Create account</Heading>
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form
+          id="amazonForm"
+          onSubmit={(e) => handleSubmit(e)}
+        >
           <AppFormControl
             isRequired
             htmlFor="username"
@@ -117,6 +146,7 @@ function ControlledFormPage() {
           </AppFormControl>
 
           <Button
+            form="amazonForm"
             type="submit"
             colorScheme="yellow"
             width="100%"
@@ -126,8 +156,18 @@ function ControlledFormPage() {
           </Button>
         </form>
 
-        <AppModal isSubmitted={isSubmitted}>
-          <Text>Account has been created successfully</Text>
+        <AppModal
+          isSubmitted={isSubmitted}
+          handleClose={() => setIsSubmitted(false)}
+        >
+          <Icon
+            as={BsFillCheckCircleFill}
+            color="green.500"
+            width={8}
+            height={8}
+            marginBottom={2}
+          />
+          <Text fontWeight="bold">Account has been created successfully</Text>
         </AppModal>
       </Flex>
     </>

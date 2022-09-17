@@ -7,28 +7,24 @@ import {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  Text,
-  useDisclosure,
 } from '@chakra-ui/react'
 import React from 'react'
 
-function AppModal({ isSubmitted, title, children }) {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
+function AppModal({ isSubmitted, title, children, handleClose }) {
   return (
     <Modal
-      onClose={onClose}
+      onClose={handleClose}
       isOpen={isSubmitted}
       scrollBehavior="inside"
       isCentered
     >
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent textAlign="center">
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
+        <ModalFooter mx="auto">
+          <Button onClick={handleClose}>Close</Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
