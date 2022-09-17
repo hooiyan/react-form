@@ -16,7 +16,7 @@ function HomeCard({
         backgroundColor={`${bgColor}.500`}
         color={color}
         padding={8}
-        borderRadius="md"
+        borderRadius="xl"
         cursor="pointer"
         width="300px"
         height="250px"
