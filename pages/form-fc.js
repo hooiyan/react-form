@@ -1,7 +1,7 @@
 import React from 'react'
 
-function FormikComponentsPage() {
+function FormikComponentsFormPage() {
   return <div>FormikComponentsPage</div>
 }
 
-export default FormikComponentsPage
+export default FormikComponentsFormPage

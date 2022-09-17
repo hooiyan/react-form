@@ -1,7 +1,6 @@
-
 import styles from '@/styles/NoJSForm.module.css'
 
-function NoJSForm() {
+function NoJSFormPage() {
   return (
     <form
       action="http://localhost:3000/api/login"
@@ -45,4 +44,4 @@ function NoJSForm() {
   )
 }
 
-export default NoJSForm
+export default NoJSFormPage

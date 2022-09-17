@@ -1,7 +1,7 @@
 import React from 'react'
 
-function HookFormPage() {
+function ReactHooksFormPage() {
   return <div>HookFormPage</div>
 }
 
-export default HookFormPage
+export default ReactHooksFormPage
