@@ -1,15 +1,14 @@
 import { Button, Flex, Heading, Icon, Image, Text } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { collection, addDoc } from 'firebase/firestore'
+import { addDoc, collection } from 'firebase/firestore'
+import { useState } from 'react'
 import { BsFillCheckCircleFill } from 'react-icons/bs'
-import { doc, getDoc } from 'firebase/firestore'
 
 import AppFormControl from '@/components/AppFormControl'
 import AppInput from '@/components/AppInput'
+import AppModal from '@/components/AppModal'
 import Helmet from '@/components/Helmet'
 import { axiosPublic } from '@/lib/axios'
 import { db } from 'firebaseConfig'
-import AppModal from '@/components/AppModal'
 
 function ControlledFormPage() {
   const [isLoading, setIsLoading] = useState(false)
@@ -56,22 +55,6 @@ function ControlledFormPage() {
       .finally(() => setIsLoading(false))
   }
 
-  useEffect(() => {
-    const getDoccc = async () => {
-      const docRef = doc(db, 'amazon', 'BNK5A2ZVB9cXL8TRxjlJ')
-      const docSnap = await getDoc(docRef)
-
-      if (docSnap.exists()) {
-        console.log('Document data:', docSnap.data())
-      } else {
-        // doc.data() will be undefined in this case
-        console.log('No such document!')
-      }
-    }
-
-    getDoccc()
-  }, [])
-
   return (
     <>
       <Helmet title="React controlled component" />
@@ -93,7 +76,6 @@ function ControlledFormPage() {
             label="Your name"
           >
             <AppInput
-              type="text"
               id="username"
               placeholder="First and last name"
               value={username}
@@ -107,7 +89,6 @@ function ControlledFormPage() {
             label="Mobile number or email"
           >
             <AppInput
-              type="text"
               id="loginMethod"
               placeholder="Mobile number or email"
               value={loginMethod}

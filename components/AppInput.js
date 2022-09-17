@@ -1,7 +1,14 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
 
-function AppInput({ type, id, placeholder, value, handleChange, ...props }) {
+function AppInput({
+  type = 'text',
+  id,
+  placeholder = '',
+  value,
+  handleChange,
+  ...props
+}) {
   return (
     <Input
       type={type}

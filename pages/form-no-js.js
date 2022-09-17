@@ -9,6 +9,7 @@ function NoJSFormPage() {
     >
       <label htmlFor="username">Username</label>
       <input
+        required
         id="username"
         name="username"
         type="text"
@@ -18,6 +19,7 @@ function NoJSFormPage() {
       <br />
       <label htmlFor="password">Password</label>
       <input
+        required
         id="password"
         name="password"
         type="password"
