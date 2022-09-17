@@ -1,49 +1,47 @@
-import AppForm from '@/components/AppForm'
+import { Flex } from '@chakra-ui/react'
+
 import Helmet from '@/components/Helmet'
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import axios from 'axios'
-import { useState } from 'react'
+import HomeCard from '@/components/HomeCard'
+import HomeTitle from '@/components/HomeTitle'
 
 export default function HomePage() {
-  const api = 'http://localhost:3000/api/login'
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    axios
-      .post(api, { username, password })
-      .then((res) => console.log(res))
-      .catch((err) => console.error(err.response.data))
-  }
+  const data = [
+    { id: 0, title: 'Form without JS', href: '/no-js-form', bgColor: 'green' },
+    {
+      id: 1,
+      title: 'Controlled components',
+      href: '/controlled',
+      bgColor: 'blue',
+    },
+    { id: 2, title: 'Form without JS', href: '/no-js-form', bgColor: 'yellow' },
+    { id: 3, title: 'Form without JS', href: '/no-js-form', bgColor: 'pink' },
+    { id: 4, title: 'Form without JS', href: '/no-js-form', bgColor: 'gray' },
+    { id: 5, title: 'Form without JS', href: '/no-js-form', bgColor: 'purple' },
+  ]
 
   return (
     <>
-      <Helmet title="React Form" />
-      {/* <AppForm /> */}
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <FormControl>
-          <FormLabel htmlFor="username">Username</FormLabel>
-          <Input
-            id="username"
-            name="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+      <Helmet title="Forms" />
+      <HomeTitle />
+      <Flex
+        alignItems="center"
+        justifyContent="center"
+        flexWrap="wrap"
+        gap={16}
+        marginY={16}
+        marginX="auto"
+        maxWidth="1080px"
+      >
+        {data.map((item) => (
+          <HomeCard
+            key={item.id}
+            title={item.title}
+            href={item.href}
+            bgColor={item.bgColor}
+            index={item.id}
           />
-        </FormControl>
-        <FormControl>
-          <FormLabel htmlFor="password">Password</FormLabel>
-          <Input
-            id="password"
-            name="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormControl>
-        <Button type="submit">Submit</Button>
-      </form>
+        ))}
+      </Flex>
     </>
   )
 }

@@ -1,14 +1,14 @@
-import React from 'react'
-import styles from '../styles/HTMLForm.module.css'
 
-function HTMLForm() {
+import styles from '@/styles/NoJSForm.module.css'
+
+function NoJSForm() {
   return (
     <form
       action="http://localhost:3000/api/login"
       method="post"
       className={styles.form}
     >
-      <label for="username">Username</label>
+      <label htmlFor="username">Username</label>
       <input
         id="username"
         name="username"
@@ -17,12 +17,12 @@ function HTMLForm() {
         className={styles.input}
       />
       <br />
-      <label for="password">Password</label>
+      <label htmlFor="password">Password</label>
       <input
         id="password"
         name="password"
         type="password"
-        placeholder="Your password"
+        placeholder="******"
         className={styles.input}
       />
       <br />
@@ -31,12 +31,18 @@ function HTMLForm() {
         <input
           type="submit"
           value="Log in"
+          className={styles.input}
         />
         <br />
-        <button type="reset">Reset</button>
+        <button
+          type="reset"
+          className={styles.input}
+        >
+          Reset
+        </button>
       </div>
     </form>
   )
 }
 
-export default HTMLForm
+export default NoJSForm
