@@ -1,16 +1,16 @@
-import { Box, Flex, Input, Select } from '@chakra-ui/react'
+import { Box, Button, Flex, Input, Select } from '@chakra-ui/react'
 
 import AppFormControl from '@/components/AppFormControl'
-import AppInput from '@/components/AppInput'
-import useForm from '@/lib/useForm'
 import Helmet from '@/components/Helmet'
-import { day, month, year } from '../utils'
+import useForm from '@/lib/useForm'
+import { day, month, year } from '@/utils/index'
 
 function ReactHooksFormPage() {
   const { inputs, handleChange } = useForm({
     firstname: 'Jenny',
     surname: 'Kim',
     loginMethod: '0167319898',
+    dob: { day: '10', month: 'Mar', year: '2000' },
   })
 
   return (
@@ -72,7 +72,10 @@ function ReactHooksFormPage() {
         label="Date of birth"
       >
         <Flex gap={4}>
-          <Select>
+          <Select
+            value={inputs.dob.day}
+            onChange={handleChange}
+          >
             {day.map((d) => (
               <option
                 key={d}
@@ -82,7 +85,10 @@ function ReactHooksFormPage() {
               </option>
             ))}
           </Select>
-          <Select>
+          <Select
+            value={inputs.dob.month}
+            onChange={handleChange}
+          >
             {month.map((m) => (
               <option
                 key={m}
@@ -92,7 +98,10 @@ function ReactHooksFormPage() {
               </option>
             ))}
           </Select>
-          <Select>
+          <Select
+            value={inputs.dob.year}
+            onChange={handleChange}
+          >
             {year.map((y) => (
               <option
                 key={y}
@@ -104,6 +113,10 @@ function ReactHooksFormPage() {
           </Select>
         </Flex>
       </AppFormControl>
+
+      <AppFormControl label="Gender"></AppFormControl>
+
+      <Button colorScheme="green">Sign up</Button>
     </Box>
   )
 }
