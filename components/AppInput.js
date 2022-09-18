@@ -1,10 +1,12 @@
 import { Input } from '@chakra-ui/react'
 import React from 'react'
 
-function AppInput({ handleChange, ...props }) {
+function AppInput({ isFormik, id, handleChange, ...props }) {
   return (
     <Input
-      onChange={(e) => handleChange(e.target.value)}
+      id={id}
+      name={id}
+      // onChange={(e) => (!isFormik ? handleChange(e.target.value) : null)}
       {...props}
     />
   )
