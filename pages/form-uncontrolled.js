@@ -71,10 +71,13 @@ function UncontrolledFormPage() {
           htmlFor="nationality"
           label="Nationality/Citizenship"
         >
-          <Select
-            ref={nationalityRef}
-            placeholder="Please select option"
-          >
+          <Select ref={nationalityRef}>
+            <option
+              selected
+              disabled
+            >
+              Please select option
+            </option>
             <option>Malaysia</option>
             <option>Singapore</option>
             <option>Thailand</option>

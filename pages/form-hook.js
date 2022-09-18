@@ -1,16 +1,20 @@
 import {
+  Box,
   Button,
   Flex,
+  Heading,
   Input,
   Radio,
   RadioGroup,
   Select,
+  Text,
 } from '@chakra-ui/react'
 
 import AppFormControl from '@/components/AppFormControl'
 import Helmet from '@/components/Helmet'
 import useForm from '@/lib/useForm'
 import { day, month, year } from '@/utils/index'
+import CustomPronoun from '@/components/CustomPronoun'
 
 function ReactHooksFormPage() {
   const { inputs, handleChange } = useForm({
@@ -22,6 +26,8 @@ function ReactHooksFormPage() {
     month: 'Mar',
     year: '2000',
     gender: 'female',
+    customGender: 'none',
+    optionalGender: '',
   })
 
   const handleSubmit = (e) => {
@@ -32,7 +38,18 @@ function ReactHooksFormPage() {
   return (
     <>
       <Helmet title="React hooks" />
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <Flex
+        flexDir="column"
+        mb={6}
+      >
+        <Heading>Sign Up</Heading>
+        <Text color="gray.500">{`It's quick and easy.`}</Text>
+      </Flex>
+      <Box
+        as="form"
+        onSubmit={(e) => handleSubmit(e)}
+        textAlign="center"
+      >
         <Flex gap={4}>
           <AppFormControl
             isRequired
@@ -44,6 +61,7 @@ function ReactHooksFormPage() {
               name="firstname"
               value={inputs.firstname}
               onChange={handleChange}
+              bgColor="gray.100"
             />
           </AppFormControl>
 
@@ -57,6 +75,7 @@ function ReactHooksFormPage() {
               name="surname"
               value={inputs.surname}
               onChange={handleChange}
+              bgColor="gray.100"
             />
           </AppFormControl>
         </Flex>
@@ -71,6 +90,7 @@ function ReactHooksFormPage() {
             name="loginMethod"
             value={inputs.loginMethod}
             onChange={handleChange}
+            bgColor="gray.100"
           />
         </AppFormControl>
 
@@ -85,6 +105,8 @@ function ReactHooksFormPage() {
             type="password"
             value={inputs.password}
             onChange={handleChange}
+            placeholder='******'  
+            bgColor="gray.100"
           />
         </AppFormControl>
 
@@ -147,7 +169,7 @@ function ReactHooksFormPage() {
             id="gender"
             name="gender"
             value={inputs.gender}
-            onChange={(e) => console.log(e)}
+            onChange={(val) => handleChange(null, 'gender', val)}
           >
             <Flex justifyContent="space-between">
               <Radio value="male">Male</Radio>
@@ -157,13 +179,24 @@ function ReactHooksFormPage() {
           </RadioGroup>
         </AppFormControl>
 
+        {inputs.gender === 'custom' && (
+          <>
+            <CustomPronoun
+              value={inputs.customGender}
+              onChange={handleChange}
+            />
+          </>
+        )}
+
         <Button
           type="submit"
           colorScheme="green"
+          width="200px"
+          mt={4}
         >
-          Sign up
+          Sign Up
         </Button>
-      </form>
+      </Box>
     </>
   )
 }

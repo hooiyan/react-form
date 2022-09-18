@@ -27,6 +27,10 @@ function ControlledFormPage() {
     setConfirmPassword('')
   }
 
+  const handleChange = (setState, e) => {
+    setState(e.target.value)
+  }
+
   const handleSubmit = (e) => {
     const url = '/create-account'
 
