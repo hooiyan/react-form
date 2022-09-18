@@ -18,7 +18,7 @@ function FormikComponentsFormPage() {
         onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
       >
         {({ getFieldProps }) => (
-          <Form id="amazonForm">
+          <Form>
             {console.log(getFieldProps)}
             <Flex flexDirection="column">
               <Image
@@ -77,7 +77,6 @@ function FormikComponentsFormPage() {
               </AppFormControl>
 
               <Button
-                form="amazonForm"
                 type="submit"
                 colorScheme="yellow"
                 width="100%"
