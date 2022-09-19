@@ -84,16 +84,20 @@ function UncontrolledFormPage() {
           htmlFor="nationality"
           label="Nationality/Citizenship"
         >
-          <Select ref={nationalityRef}>
+          <Select
+            ref={nationalityRef}
+            defaultValue="th"
+          >
             <option
-              selected
+              value="none"
               disabled
             >
               Please select option
             </option>
-            <option>Malaysia</option>
-            <option>Singapore</option>
-            <option>Thailand</option>
+            <option value="my">Malaysia</option>
+            <option value="sg">Singapore</option>
+            <option value="th">Thailand</option>
+            <option value="de">German</option>
           </Select>
         </AppFormControl>
 

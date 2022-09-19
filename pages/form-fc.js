@@ -11,7 +11,7 @@ function FormikComponentsFormPage() {
       <Helmet title="Formik component" />
       <Formik
         initialValues={{
-          username: 'Anonymous',
+          username: 'Elon Musk',
           loginMethod: '',
           password: '',
           confirmPassword: '',

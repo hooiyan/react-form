@@ -18,8 +18,8 @@ import CustomPronoun from '@/components/CustomPronoun'
 
 function ReactHooksFormPage() {
   const { inputs, handleChange } = useForm({
-    firstname: 'Jenny',
-    surname: 'Kim',
+    firstname: 'Einstein',
+    surname: 'Albert',
     loginMethod: '0167319898',
     password: '',
     day: '10',

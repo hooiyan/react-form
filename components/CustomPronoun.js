@@ -8,13 +8,13 @@ function CustomPronoun({ value, onChange }) {
       <AppFormControl label="">
         <Select
           name="customPronoun"
-          value={value}
+          defaultValue={value}
           onChange={(e) => onChange(e)}
-          // placholder="Select your pronoun"
+          placholder="Select your pronoun"
         >
           <option
-            disabled
             value="none"
+            disabled
           >{`Select your pronoun`}</option>
           <option value="she">{`She: "Wish her a happy birthday!"`}</option>
           <option value="he">{`He: "Wish him a happy birthday!"`}</option>
