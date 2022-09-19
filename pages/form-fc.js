@@ -108,7 +108,7 @@ function FormikComponentsFormPage() {
 
               <Button
                 type="submit"
-                colorScheme="yellow"
+                colorScheme="teal"
                 width="100%"
               >
                 Create

@@ -42,7 +42,7 @@ function ReactHooksFormPage() {
         flexDir="column"
         mb={6}
       >
-        <Heading>Sign Up</Heading>
+        <Heading color="blue.600">Sign Up</Heading>
         <Text color="gray.500">{`It's quick and easy.`}</Text>
       </Flex>
       <Box
@@ -190,7 +190,7 @@ function ReactHooksFormPage() {
 
         <Button
           type="submit"
-          colorScheme="green"
+          colorScheme="blue"
           width="200px"
           mt={4}
         >

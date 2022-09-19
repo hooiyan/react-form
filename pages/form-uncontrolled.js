@@ -29,10 +29,15 @@ function UncontrolledFormPage() {
   return (
     <>
       <Helmet title="React uncontrolled component" />
-      <Box
+      <Flex
         as="form"
         id="icaForm"
         onSubmit={(e) => handleSubmit(e)}
+        p={8}
+        border="2px solid"
+        borderColor="pink.300"
+        borderRadius="lg"
+        flexDir="column"
       >
         <AppFormControl
           isRequired
@@ -41,7 +46,7 @@ function UncontrolledFormPage() {
         >
           <Input
             ref={fullNameRef}
-            defaultValue="Jenny"
+            defaultValue="G Dragon"
             id="fullname"
             name="fullname"
           />
@@ -95,10 +100,13 @@ function UncontrolledFormPage() {
         <Button
           form="icaForm"
           type="submit"
+          alignSelf="flex-end"
+          mt={4}
+          colorScheme="pink"
         >
           Confirm
         </Button>
-      </Box>
+      </Flex>
     </>
   )
 }
