@@ -6,7 +6,7 @@ function NoJSFormPage() {
     <>
       <Helmet title="Form without JS" />
       <form
-        action="http://localhost:3000/api/login"
+        action="http://localhost:3000/api/form-no-js"
         method="post"
         className={styles.form}
       >

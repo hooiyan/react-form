@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik'
 
 import AppFormControl from '@/components/AppFormControl'
 import Helmet from '@/components/Helmet'
+import { axiosPublic } from '@/lib/axios'
 
 function FormikComponentsFormPage() {
   return (
@@ -15,11 +16,17 @@ function FormikComponentsFormPage() {
           password: '',
           confirmPassword: '',
         }}
-        onSubmit={(values) => alert(JSON.stringify(values, null, 2))}
+        onSubmit={(values) => {
+          const url = '/form-fc'
+          alert(JSON.stringify(values, null, 2))
+          axiosPublic
+            .post(url, values)
+            .then((res) => console.log(res.data.message))
+            .catch((err) => console.error(err.message))
+        }}
       >
         {({ getFieldProps }) => (
           <Form>
-            {console.log(getFieldProps)}
             <Flex flexDirection="column">
               <Image
                 src="/assets/amazon.jpeg"

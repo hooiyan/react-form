@@ -28,7 +28,7 @@ function ControlledFormPage() {
   }
 
   const handleSubmit = (e) => {
-    const url = '/create-account'
+    const url = '/form-controlled'
 
     e.preventDefault()
     setIsLoading(true)
@@ -49,6 +49,7 @@ function ControlledFormPage() {
           })
           setIsSubmitted(true)
           clearForm()
+          alert(res.data.message)
         }
       })
       .catch((err) => console.error(err.message))

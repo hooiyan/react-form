@@ -32,7 +32,7 @@ function ReactHooksFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(inputs)
+    alert(JSON.stringify(inputs, null, 2))
   }
 
   return (
@@ -105,7 +105,7 @@ function ReactHooksFormPage() {
             type="password"
             value={inputs.password}
             onChange={handleChange}
-            placeholder='******'  
+            placeholder="******"
             bgColor="gray.100"
           />
         </AppFormControl>

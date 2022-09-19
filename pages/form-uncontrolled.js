@@ -12,10 +12,18 @@ function UncontrolledFormPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('fullname', fullNameRef.current.value)
-    console.log('passport', passportRef.current.value)
-    console.log('dob', dobRef.current.value)
-    console.log('nationality', nationalityRef.current.value)
+    alert(
+      JSON.stringify(
+        {
+          fullname: fullNameRef.current.value,
+          passport: passportRef.current.value,
+          dob: dobRef.current.value,
+          nationality: nationalityRef.current.value,
+        },
+        null,
+        2
+      )
+    )
   }
 
   return (
